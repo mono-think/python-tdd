@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    volumes:
+      # ホストのカレントディレクトリをコンテナの/appに同期
+      - .:/app
+    environment:
+      - PYTHONPATH=/app
+    # コンテナのデフォルトコマンドとしてpytestを設定
+    command: pytest -v
